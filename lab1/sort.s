@@ -1,7 +1,7 @@
-	.arch armv7-a
-	.text
-	.global	sort
-	.thumb
+    .arch armv7-a
+    .text
+    .global sort
+    .thumb
     .thumb_func
 sort:
     push {r7}
