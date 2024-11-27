@@ -108,7 +108,7 @@ Example output:
 
 ```plaintext
 5 2 4 6 1 3
-6 5 4 3 2 1
+1 2 3 4 5 6
 ```
 
 ### Troubleshooting
