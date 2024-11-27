@@ -124,3 +124,16 @@ unknown filesystem type 'exfat'
 ```
 
 Solution: Format the USB drive as ext4.
+
+Problem:
+
+```plaintext
+version `GLIBC_2.39' not found
+```
+
+Solution: Link the binary statically:
+
+```patch
+-arm-linux-gnueabihf-gcc main.c sort.s
++arm-linux-gnueabihf-gcc -static main.c sort.s
+```
