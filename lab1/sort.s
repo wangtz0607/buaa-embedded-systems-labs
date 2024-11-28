@@ -33,7 +33,7 @@ sort:
     ldr r1, [r7, #4]    @ a
     add r3, r3, r1      @ &a[j + 1]
     ldr r3, [r3]        @ a[j + 1]
-    cmp r2, r3          @ if (a[j] < a[j + 1])
+    cmp r2, r3          @ if (a[j] <= a[j + 1])
     ble .L4
     ldr r3, [r7, #16]   @ j
     add r3, r3, #1      @ j + 1
