@@ -1,51 +1,5 @@
 # buaa-embedded-systems-labs
 
-## Lab 1
-
-```sh
-arm-linux-gnueabihf-gcc main.c sort.s
-```
-
-Example input:
-
-```plaintext
-5 2 4 6 1 3 -1
-```
-
-Example output:
-
-```plaintext
-5 2 4 6 1 3
-1 2 3 4 5 6
-```
-
-### Troubleshooting
-
-Problem:
-
-```plaintext
-unknown filesystem type 'ntfs'
-```
-
-```plaintext
-unknown filesystem type 'exfat'
-```
-
-Solution: Format the USB drive as ext4.
-
-Problem:
-
-```plaintext
-version `GLIBC_2.39' not found
-```
-
-Solution: Link the binary statically:
-
-```patch
--arm-linux-gnueabihf-gcc main.c sort.s
-+arm-linux-gnueabihf-gcc -static main.c sort.s
-```
-
 ## Lab 0
 
 ### Troubleshooting
@@ -136,4 +90,50 @@ Solution:
 
 ```sh
 sudo apt-get install lib32z1
+```
+
+## Lab 1
+
+```sh
+arm-linux-gnueabihf-gcc main.c sort.s
+```
+
+Example input:
+
+```plaintext
+5 2 4 6 1 3 -1
+```
+
+Example output:
+
+```plaintext
+5 2 4 6 1 3
+1 2 3 4 5 6
+```
+
+### Troubleshooting
+
+Problem:
+
+```plaintext
+unknown filesystem type 'ntfs'
+```
+
+```plaintext
+unknown filesystem type 'exfat'
+```
+
+Solution: Format the USB drive as ext4.
+
+Problem:
+
+```plaintext
+version `GLIBC_2.39' not found
+```
+
+Solution: Link the binary statically:
+
+```patch
+-arm-linux-gnueabihf-gcc main.c sort.s
++arm-linux-gnueabihf-gcc -static main.c sort.s
 ```
