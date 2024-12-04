@@ -137,3 +137,60 @@ Solution: Link the binary statically:
 -arm-linux-gnueabihf-gcc main.c sort.s
 +arm-linux-gnueabihf-gcc -static main.c sort.s
 ```
+
+## Lab 2-1
+
+```sh
+arm-linux-gnueabihf-gcc main.c
+```
+
+### Basics
+
+#### UART Data Frame Format
+
+| Start Bit | Data Bits | Parity Bit | Stop Bits |
+|:-:|:-:|:-:|:-:|
+| 1 | 5 - 9 | 0 / 1 | 1 / 1.5 / 2 |
+
+Typical configuration:
+
+| Start Bit | Data Bits | Parity Bit | Stop Bits |
+|:-:|:-:|:-:|:-:|
+| 1 | 8 | 0 | 1 |
+
+##### Example
+
+Data: `0b01000001` (`'A'`)
+
+UART data frame:
+
+| Start Bit | Data Bits | Parity Bit | Stop Bits |
+|:-:|:-:|:-:|:-:|
+| `0` | `01000001` | (None) | `1` |
+
+### Tips
+
+#### Creating Virtual Serial Ports
+
+```sh
+sudo socat PTY,link=/dev/ttyV0,raw,echo=0 PTY,link=/dev/ttyV1,raw,echo=0
+```
+
+```sh
+sudo stty -F /dev/ttyV0 9600
+sudo stty -F /dev/ttyV1 9600
+```
+
+```sh
+sudo screen /dev/ttyV0 9600
+```
+
+```sh
+sudo screen /dev/ttyV1 9600
+```
+
+## Lab 2-2
+
+```sh
+arm-linux-gnueabihf-gcc main.c -lpthread
+```
