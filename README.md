@@ -168,3 +168,35 @@ sudo screen /dev/ttyV1 9600
 ```sh
 arm-linux-gnueabihf-gcc main.c -lpthread
 ```
+
+## Lab 3-1
+
+### `out`
+
+```sh
+arm-linux-gnueabihf-gcc -o out out.c gpio.c
+```
+
+```sh
+./out 24 26 27 37 32 29
+```
+
+### `in_out`
+
+```sh
+arm-linux-gnueabihf-gcc -o in_out in_out.c gpio.c
+```
+
+```sh
+./in_out 36 24
+```
+
+### `in_out_2`
+
+```sh
+arm-linux-gnueabihf-gcc -o in_out_2 in_out_2.c gpio.c
+```
+
+```sh
+./in_out_2 36 170 24 27
+```
