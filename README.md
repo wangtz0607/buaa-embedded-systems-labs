@@ -200,3 +200,19 @@ arm-linux-gnueabihf-gcc -o in_out_2 in_out_2.c gpio.c
 ```sh
 ./in_out_2 36 170 24 27
 ```
+
+## Lab 3-2
+
+```sh
+export ARCH=arm
+export CROSS_COMPILE=/path/to/arm-linux-gnueabihf-
+make KDIR=/path/to/linux-3.14.52
+```
+
+```sh
+insmod ./gpio_driver.ko
+```
+
+```sh
+rmmod gpio_driver
+```
