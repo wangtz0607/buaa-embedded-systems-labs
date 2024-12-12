@@ -5,7 +5,6 @@
 #include <string.h>
 
 #include <errno.h>
-#include <error.h>
 #include <fcntl.h>
 #include <unistd.h>
 
