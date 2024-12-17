@@ -42,7 +42,7 @@ static int __init gpio_driver_init(void) {
         goto cleanup2;
     }
     irq = ret;
-    if ((ret = request_irq(irq, handler, IRQF_TRIGGER_RISING, "my_input", NULL)) < 0) {
+    if ((ret = request_irq(irq, handler, IRQF_TRIGGER_RISING, "my_input_pin", NULL)) < 0) {
         printk(KERN_ERR "request_irq: %d\n", ret);
         goto cleanup2;
     }
