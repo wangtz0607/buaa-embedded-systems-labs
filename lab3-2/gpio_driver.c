@@ -7,13 +7,12 @@
 #define OUTPUT_PIN 24
 
 static int irq;
-static int count;
 
-static irqreturn_t gpio_irq_handler(int irq, void *dev_id) {
+static irqreturn_t my_handler(int irq, void *dev_id) {
     ++count;
     printk(KERN_INFO "count=%d\n", count);
     int ret;
-    if ((ret = gpio_request(OUTPUT_PIN, "example_output")) < 0) {
+    if ((ret = gpio_request(OUTPUT_PIN, "my_output_pin")) < 0) {
         printk(KERN_ERR "gpio_request: %d\n", ret);
         goto cleanup1;
     }
@@ -28,9 +27,9 @@ cleanup1:
     return IRQ_HANDLED;
 }
 
-static int __init gpio_driver_init(void) {
+static int __init my_init(void) {
     int ret;
-    if ((ret = gpio_request(INPUT_PIN, "example_input")) < 0) {
+    if ((ret = gpio_request(INPUT_PIN, "my_input_pin")) < 0) {
         printk(KERN_ERR "gpio_request: %d\n", ret);
         goto cleanup1;
     }
@@ -43,7 +42,7 @@ static int __init gpio_driver_init(void) {
         goto cleanup2;
     }
     irq = ret;
-    if ((ret = request_irq(irq, gpio_irq_handler, IRQF_TRIGGER_RISING, "example_input", NULL)) < 0) {
+    if ((ret = request_irq(irq, my_handler, IRQF_TRIGGER_RISING, "my_input", NULL)) < 0) {
         printk(KERN_ERR "request_irq: %d\n", ret);
         goto cleanup2;
     }
@@ -54,12 +53,12 @@ cleanup1:
     return ret;
 }
 
-static void __exit gpio_driver_exit(void) {
+static void __exit my_exit(void) {
     free_irq(irq, NULL);
     gpio_free(INPUT_PIN);
 }
 
-module_init(gpio_driver_init);
-module_exit(gpio_driver_exit);
+module_init(my_init);
+module_exit(my_exit);
 
 MODULE_LICENSE("GPL");
