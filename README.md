@@ -216,3 +216,25 @@ insmod ./gpio_driver.ko
 ```sh
 rmmod gpio_driver
 ```
+
+## Lab 4
+
+
+```sh
+export ARCH=arm
+export CROSS_COMPILE=/path/to/arm-linux-gnueabihf-
+make KDIR=/path/to/linux-3.14.52
+```
+
+```sh
+insmod ./zlg7290_driver.ko
+```
+
+```sh
+echo "1234" > /dev/zlg7290_led
+echo "abcd" > /dev/zlg7290_led
+```
+
+```sh
+rmmod zlg7290_driver
+```
