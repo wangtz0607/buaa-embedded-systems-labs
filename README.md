@@ -238,3 +238,15 @@ echo "abcd" > /dev/zlg7290_led
 ```sh
 rmmod zlg7290_driver
 ```
+
+## Lab 5-1
+
+```sh
+arm-linux-gnueabihf-gcc -I/path/to/include main.c -L/path/to/lib -lsqlite3
+```
+
+## Lab 5-2
+
+```sh
+arm-linux-gnueabihf-gcc -I/path/to/include main.c -L/path/to/lib -lsqlite3
+```
